@@ -1,0 +1,113 @@
+
+  <div class="WorldCup">
+    <!-- <div class="page page0"  v-show="page=='page0'">
+      	<img src="../../assets/page0_01.png" class="page0_01" />
+    </div> -->
+    <div class="page page1">
+      	<div class="top">
+      		<img src="../../assets/top_bg.png" class="top_bg" />
+      	</div>
+      	<img src="../../assets/phb_btn.png" class="phb_btn" @click="phb_btn">
+		    <img src="../../assets/page1_01.png" class="page1_01">
+      	<div class="schedule" v-if="scheduleList.length>0">
+      		<div class="countryA">
+      			<div class="word">
+      				{{scheduleList[scheduleIndex].countryA}}
+      			</div>
+      			<img :src="'./static/img/country/'+scheduleList[scheduleIndex].countryA + '.png'" class="country">
+      		</div>
+      		<div class="middle">
+      			<div class="time1">{{scheduleList[scheduleIndex].starttime | formatDate}}</div>
+      			<div class="time2">{{scheduleList[scheduleIndex].starttime | formatDate1}}</div>
+      			<!-- <div class="time">6月15日</div> -->
+      			<img src="../../assets/vs.png" class="vs">
+      			<div class="group">{{scheduleList[scheduleIndex].grouptype}}</div>
+      		</div>
+      		<div class="countryB">
+      			<img :src="'./static/img/country/'+scheduleList[scheduleIndex].countryB + '.png'" class="country">
+      			<div class="word">
+      				{{scheduleList[scheduleIndex].countryB}}
+      			</div>
+      		</div>
+      	</div>
+      	<img v-if="scheduleList.length>0" src="../../assets/update.png" class="update" @click="change()"/>
+      	<div class="guess" v-if="scheduleList.length>0">
+      		<div class="btn" @click="selectGuess(scheduleList[scheduleIndex].countryA)">{{scheduleList[scheduleIndex].countryA+'胜'}}</div>
+      		<div class="btn" @click="selectGuess('平局')">平 局</div>
+      		<div class="btn" @click="selectGuess(scheduleList[scheduleIndex].countryB)">{{scheduleList[scheduleIndex].countryB+'胜'}}</div>
+      	</div>
+        <div class="noschedule" v-if="scheduleList.length==0">
+          当前没有可竞猜的赛程
+        </div>
+      	<!-- 我的当日竞猜 -->
+      	<div class="mySchedule" v-show="showMySchedule">
+      		<img src="../../assets/sch_bg.png" class="sch_bg" />
+      		<div class="data">
+      			<div class="suncounts">
+      				我的可用积分：<span class="sp">{{sumcounts}}</span>
+      			</div>
+      			<div class="item" v-for="arr in scheduleListById">
+      				<div>{{arr.date}}</div>
+      				<div v-for="item in arr.scheduleList" >
+      					<div class="row">
+      						<span class="t1">{{item.starttime | formatDate1}}</span>
+      						<span class="t2">{{item.countryA}}{{item.guess==item.countryA?"(胜)":""}}</span>
+      						<span class="t3">VS</span>
+      						<span class="t4">{{item.countryB}}{{item.guess==item.countryB?"(胜)":""}}</span>
+      						<span class="t5">{{item.flag ==0 ? '未竞猜' : (item.data2=='胜'?('获得'+item.data1+'积分'):(item.data2=='败'?('扣除'+item.counts+'积分'):'已参与'))}}</span>
+      					</div>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+
+      	<div class="mask" v-show="showCathectic">
+  	      <img src="../../assets/result_close.png" class="result_close" @click="showResultRule(false)" />
+  	      <div class="tips">
+  	        <img src="../../assets/wc_01.png" class="wc_01"  />
+  	        <div class="content">
+  	          <p class="p1">我的总积分是<span class="count">{{sumcounts}}</span> </p>
+  	          <p class="count">{{guess=='平局'?guess:guess + '胜'}}</p>
+  	          <p class="p1">下注积分<input type="number" v-model="xzjf" maxlength=6 placeholder="下注积分" class="xzjf" /> </p>
+  	        </div>
+  	        <img src="../../assets/djtj.png" class="djtj" @click="startGuess()">
+  	      </div>
+  	    </div>
+	    <div class="mask" v-show="showSuccess">
+	      <img src="../../assets/result_close.png" class="result_close" @click="showSuccessStatus(false)" />
+	      <div class="tips">
+	        <img src="../../assets/wc_02.png" class="wc_02"  />
+	        <div class="content">
+	          <p class="p2">您已成功投注</p>
+	          <p class="p2">用去{{xzjf}}积分</p>
+	          <p class="p2">祝君好运！</p>
+	        </div>
+	        <!-- <img src="../../assets/djtj.png" class="djtj"> -->
+	      </div>
+	    </div>
+    </div>
+    
+    <!-- <img class="gobuy" @click="vipClick" src="../../assets/goBuy.jpg"/> -->
+    <swipe class="my-swipe" :speed="1000" :auto="4000" :show-indicators="false" >
+      <swipe-item class="slide" v-for="adver in adverList" :key="adver.id">
+        <img :src="adver.imageUrl" @click="skip(adver)">
+      </swipe-item>
+    </swipe>
+    <div class="mybottom">
+      <div class="item" @click="select(1)">
+        <img src="../../assets/bottom1_1.jpg" class="bg" v-show="selectIndex!=1"><img src="../../assets/bottom2_1.jpg" class="bg" v-show="selectIndex==1">
+      </div>
+      <div class="item" @click="select(2)">
+        <img src="../../assets/bottom1_2.jpg"  class="bg" v-show="selectIndex!=2"><img src="../../assets/bottom2_2.jpg"  class="bg" v-show="selectIndex==2">
+      </div>
+      <div class="item" @click="select(3)">
+        <img src="../../assets/bottom1_3.jpg"  class="bg" v-show="selectIndex!=3"><img src="../../assets/bottom2_3.jpg"  class="bg" v-show="selectIndex==3">
+      </div>
+      <div class="item" @click="select(4)">
+        <img src="../../assets/bottom1_4.jpg"  class="bg" v-show="selectIndex!=4"><img src="../../assets/bottom2_4.jpg"  class="bg" v-show="selectIndex==4">
+      </div>
+      <div class="item" @click="select(5)">
+        <img src="../../assets/bottom1_5.jpg"  class="bg" v-show="selectIndex!=5"><img src="../../assets/bottom2_5.jpg"  class="bg" v-show="selectIndex==5">
+      </div>
+    </div>
+  </div>

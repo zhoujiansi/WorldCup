@@ -1,0 +1,506 @@
+html,body{
+	height: 100%;
+	overflow: hidden;
+}
+img{
+	width: 100%;
+	height: auto;
+}
+.noschedule{
+  width: 100%;
+  text-align: center;
+  color: black;
+  font-size: 0.3rem;
+  line-height: 0.3rem;
+  height:0.3rem;
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+.WorldCup{
+    width: 100%;
+    height: 100%;
+}
+.page{
+	width: 100%;
+	height: 100%;
+	max-width: 640px;
+	min-width: 321px;
+	background: url(../../assets/page0_bg.jpg) no-repeat center center;
+	-webkit-background-size: cover;
+	background-size: cover;
+	position: relative;
+	overflow: hidden;
+}
+.page.page1{
+	background: url(../../assets/page1_bg.jpg) no-repeat top center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+/*.page.fill{
+	background: url(../../assets/pg2_bg.jpg) no-repeat bottom left;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+.page .share{
+	background: url(../../assets/share_01.png) no-repeat top center;
+	-webkit-background-size: cover;
+	background-size: cover;
+}*/
+.top{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    /*background: url(../../assets/share_01.png) no-repeat top center;
+    -webkit-background-size: cover;
+    background-size: cover;*/
+}
+.top .top_bg{
+    width: 100%;
+}
+.footer{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    flex-direction: row;
+    /*justify-content:space-between;*/
+    align-items:center;
+    width: 100%;
+    height: 0.9rem;
+    background-color: #000;
+}
+.footer .item{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    background-color: #000;
+    color: white;
+    font-size: 0.18rem;
+        /*height: 100%;*/
+}
+.footer .item .icon{
+    width: 0.33rem;
+    display:block;
+}
+.footer .active{
+    background-color: rgb(241,191,40);
+}
+/*下滑浮动*/
+.page1_03{
+	width: 10%;
+	position:absolute;
+	bottom:25px;
+	left:44%;
+	z-index:6;
+  -webkit-animation:fudong 1s linear 0s infinite alternate;
+}
+@-webkit-keyframes fudong{
+	from{
+		bottom:25px;
+	}
+	to{
+		bottom:0;
+	}
+}
+/*开场css*/
+.page0 .page0_01{
+	position: absolute;
+    top: 0%;
+    width: 100%;
+    left: 0%;
+}
+
+.page0 .btn1{
+    text-align: center;
+    width: 42%;
+    margin-left: 29%;
+    margin-top: 2%;
+}
+
+.page1 .phb_btn{
+    width: 2.13rem;
+    position: absolute;
+    left: 2.13rem;
+    top:1.83rem;
+    z-index: 2;
+}
+.page1 .schedule{
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    margin-top: 2.6rem;
+    z-index: 2;
+}
+.page1 .schedule .countryA{
+    width: 2.65rem;
+    height: 1.62rem;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+}
+.page1 .schedule .countryA .word{
+    position: absolute;
+    left: 0px;
+    background-color: rgb(174,14,20);
+    padding-right:0.5rem;
+    color: white;
+}
+.page1 .schedule .countryA .country{
+    position: absolute;
+    left: 1rem;
+}
+.page1 .schedule .countryB{
+    width: 2.65rem;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+}
+.page1 .schedule .countryB .word{
+    position: absolute;
+    right: 0px;
+    background-color: rgb(31,65,109);
+    padding-left:0.5rem;
+    color: white;
+}
+/*.page1 .schedule .countryB .country{
+    position: absolute;
+    right: 1rem;
+}*/
+.page1 .word{
+    width: 1.5rem;
+    height: 0.85rem;
+    line-height: 0.425rem;
+    z-index: 3;
+    font-size: 0.2rem;
+    color: white;
+    word-wrap:break-word;
+    text-align: center;
+    box-sizing: border-box;
+    border-top: solid 2px yellow;
+    border-bottom: solid 2px yellow;
+}
+.page1 .country{
+    width: 1.62rem;
+    z-index: 9;
+}
+
+.page1 .schedule .middle{
+    position: absolute;
+    left: 2.45rem;
+    width: 1.5rem;
+    color: black;
+    text-align: center;
+}
+
+.page1 .schedule .middle .time1{
+    font-size: 0.3rem;
+    font-weight: bold;
+}
+.page1 .schedule .middle .time2{
+    font-size: 0.24rem;
+    font-weight: bold;
+}
+.page1 .schedule .middle .vs{
+    width: 1.03rem;
+}
+.page1 .schedule .middle .group{
+    font-size: 0.35rem;
+    font-weight: bold;
+}
+
+.page1 .update {
+	width: 1.54rem;
+    margin-top: 0.2rem;
+    margin-left: 2.43rem;
+    z-index: 3;
+    position: relative;
+}
+.page1 .guess{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items:center;
+    width: 5rem;
+    margin-top: 0.2rem;
+    margin-left: 0.7rem;
+    z-index: 2;
+}
+.page1 .guess .btn{
+    background: transparent url(../../assets/btn_bg.png) no-repeat center center;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 1.54rem;
+    height: 0.51rem;
+    line-height: 0.51rem;
+    text-align: center;
+    color: white;
+    border-radius: 0.05rem;
+    z-index: 2;
+    font-size: 0.24rem;
+}
+.page1 .mySchedule{
+    position: relative;
+    width: 100%;
+    margin-top: 0.2rem;
+    
+    z-index: 2;
+}
+.page1 .mySchedule .sch_bg{
+    width: 100%;
+}
+.page1 .mySchedule .data{
+    position: absolute;
+    top: 0.5rem;
+    width: 5.17rem;
+    height: 1.3rem;
+    left: 0.615rem;
+    color: white;
+    overflow: auto;
+}
+.page1 .mySchedule .data .suncounts{
+    text-align: center;
+    font-size: 0.3rem;
+}
+.page1 .mySchedule .data .suncounts .sp{
+    /*font-size: 0.24rem;*/
+}
+.page1 .mySchedule .data .item{
+    padding: 0rem 0.56rem;
+    padding-right: 0rem;
+}
+.page1 .mySchedule .data .item .row{
+    padding-left: 0.3rem;
+    display: flex;
+    flex-direction: row;
+    /*justify-content:space-between;*/
+    /*align-items:center;*/
+}
+.page1 .mySchedule .data .item .row .t1{
+    width: 15%;
+}
+.page1 .mySchedule .data .item .row .t2{
+    width: 30%;
+}
+.page1 .mySchedule .data .item .row .t3{
+    width: 7%;
+}
+.page1 .mySchedule .data .item .row .t4{
+    width: 30%;
+}
+.page1 .mySchedule .data .item .row .t5{
+    width: 18%;
+    text-align:center;
+}
+.page1 .page1_01{
+    width: 100%;
+    position: absolute;
+    left: 0rem;
+    top:1.83rem;
+    z-index: 1;
+}
+.page1 .close{
+    width: 5%;
+    position: absolute;
+    right: 15%;
+    top: 18%;
+}
+.page1 .paint{
+    width: 86.875%;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 99;
+}
+.page1 .reword_pg{
+	width: 100%;
+	height: auto;
+	top: 10%;
+	position: absolute;
+}
+.page1 .ctn{
+    width: 100%;
+    bottom: 00%;
+    text-align: center;
+    position: absolute;
+}
+.page1 .ctn .btn3{
+    width: 44.6%;
+    margin-left: 27.7%;
+    margin-bottom: 2%;
+    display: block;
+}
+.page1 .ctn .share_03{
+    width: 51.875%;
+}
+.page1 .share_02{
+    width: 100%;
+    margin-top: 0%;
+}
+.page1 .btn2{
+    width: 41%;
+    margin-top: 32%;
+    margin-left: 29.5%;
+}
+.page1 .rewordid{
+    position: absolute;
+    color: white;
+    text-align: center;
+    font-size: 10px;
+    bottom: 0px;
+    width: 100%;
+}
+
+input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #bababa;
+    font-weight: bolder;
+    font-size: 0.3rem;
+}
+input::-moz-placeholder { /* Mozilla  browsers */
+    color: #bababa;
+    font-weight: bolder;
+    font-size: 0.3rem;
+}
+input::-ms-input-placeholder { /* Internet  browsers */
+    color: #bababa;
+    font-weight: bolder;
+    font-size: 0.3rem;
+}
+.tips{
+  position: relative;
+  width: 100%;
+  top:10%;
+  text-align: center;
+}
+.tips .wc_01{
+  width: 3.73rem;
+  z-index: 5;
+  position: relative;
+}
+.tips .wc_02{
+  width: 3.83rem;
+  z-index: 5;
+  position: relative;
+}
+.tips .content{
+  width: 3.5rem;
+  height: 2rem;
+  margin-top: -0.5rem;
+  margin-left: 1.45rem;
+  background-color: white;
+  border-radius: 0.1rem;
+  padding-top: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.tips .content .title{
+  color: #0081cc;
+  font-size: 0.18rem;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+.tips .content .accept_05{
+  width: 2.15rem;
+  position: absolute;
+  bottom: 0.1rem;
+  left: 0.925rem;
+}
+.tips .content .item{
+  padding:0rem 0.1rem; 
+  display: flex;
+  flex-direction: row;
+  /*justify-content:space-between;*/
+  align-items:flex-start;
+}
+.tips .content .item .left{
+  /*width: 10%;*/
+}
+.tips .content .item .middle{
+  width: 40%;
+  text-align: left;
+}
+.tips .content .item .right{
+  width: 50%;
+  text-align: left;
+}
+.tips .content .p1{
+    color: #000;
+    font-size: 0.3rem;
+}
+.tips .content .p2{
+    color: #000;
+    font-size: 0.3rem;
+    font-weight: bold;
+    margin: 0.1rem;
+}
+.tips .content .count{
+    color: rgb(236,74,74);
+    font-size: 0.35rem;
+    margin: 0.2rem 0rem;
+}
+.tips .content .xzjf{
+    display: inline-block;
+    width: 30%;
+    height: 0.45rem;
+    line-height: 0.45rem;
+    text-align: center;
+    border:solid 1px black;
+    border-radius: 2px;
+    margin-left: 0.1rem;
+}
+.tips .djtj{
+    width: 2.03rem;
+    margin-top: 0.2rem;
+}
+.sl{
+  width: 0.3rem;
+}
+.result_close{
+  width: 0.4rem;
+  position: absolute;
+  right: 1.05rem;
+  top: 15%;
+  z-index: 999;
+}
+.mask{
+  position: fixed;
+  width: 6.4rem;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.5);
+  z-index: 99;
+}
+.mybottom{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items:flex-end;
+  bottom: 0px;
+  width: 100%;
+  font-size: 0px;
+  z-index: 9;
+}
+.mybottom .item .bg{
+  width: 1.28rem;
+}
+.my-swipe {
+  position: fixed;
+  bottom: 0.91rem;
+  height: 1.04rem;
+  width: 6.4rem;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  z-index: 9;
+}
+.slide img{
+  width: 100%;
+  height: 1.04rem;
+}
