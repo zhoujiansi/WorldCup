@@ -44,6 +44,7 @@ export const Register = async (prama) => {
     "nickname":prama.nickname,//昵称
     "Email":prama.Email,//邮箱
     "WorldCupPwd":prama.pwd,//邮箱
+    "data17":prama.shareid,// 分享来源
   };
   let parameters = {
     url: url,

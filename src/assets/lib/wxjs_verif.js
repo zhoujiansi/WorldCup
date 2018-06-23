@@ -1,14 +1,17 @@
 ﻿	;$(function(){
 		wx_share();
 	});
+	var uid;
+	var shareid; // 使用这个shareid则分享出去的一直就是这个shareid，只为这个shareid增加积分
 	function wx_share(){
-		let uid =sessionStorage.getItem('uid') || localStorage.getItem("uid");
-		console.log("***wx_share***",uid);
+		uid =sessionStorage.getItem('uid') || localStorage.getItem("uid");
+		shareid = localStorage.getItem("shareid") || uid || ""; // 使用这个shareid则分享出去的一直就是这个shareid，只为这个shareid增加积分
+		console.log("***wx_share***",uid,shareid);
 		wx_verif(0,false);//校验签名- 0代表从缓存读取token，第一次调用必须设置为0，因为频繁调用token会被微信禁用。第二个参数true代表开启debug模式
 		var share_param = {
 			title:'哈希邀你乐享世界杯',
 			desc:'猜比赛赢好礼，要什么全看你！',
-			link: location.href.split("#")[0],
+			link: location.href+"?shareid="+shareid, //location.href.split("#")[0],
 			imgUrl:'http://event.hach.com.cn/worldcup2018wap/assets/lib/logo.png',
 			type:'',
 			dataUrl:'',
@@ -16,19 +19,21 @@
 				//window.location.href="";
 				console.log("分享回调",uid);
         		// $('.share1').show();
-        		$.ajax({
-	                "async": true,
-	                "crossDomain": true,
-	                "url":'http://event.hach.com.cn/H5_server/api/WorldCup/ShareWorldCup?pdataid='+uid,
-	                "method":'get',
-	                // "contentType":"multipart/form-data",//(可以)
-	                success:function (data) {
-	                    //setCookie("data15",data.data);
-	                    console.log("分享回调success",data);
-	                },
-	                error:function(error){
-	                }
-	            })
+        		if(uid){
+        			$.ajax({
+		                "async": true,
+		                "crossDomain": true,
+		                "url":'http://event.hach.com.cn/H5_server/api/WorldCup/ShareWorldCup?pdataid='+uid,
+		                "method":'get',
+		                // "contentType":"multipart/form-data",//(可以)
+		                success:function (data) {
+		                    //setCookie("data15",data.data);
+		                    console.log("分享回调success",data);
+		                },
+		                error:function(error){
+		                }
+		            })
+        		}
 			}
 		};
 		//分享调用
@@ -42,7 +47,7 @@
 			async:true,
 			cache:false,
 			data:{
-				url:location.href.split("#")[0],
+				url:location.href+"?shareid="+shareid, //location.href.split("#")[0],
 				force:_force
 			},
 			url : "http://event.hach.com.cn/GZ_Server/key.php",

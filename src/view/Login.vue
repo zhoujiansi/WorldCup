@@ -330,7 +330,8 @@ export default {
         phone: this.phone,
         Email: this.Email,
         nickname: this.nickname,
-        pwd: this.pwd
+        pwd: this.pwd,
+        shareid: getStorage("shareid")||""
       }
       this.isLoading=true
       let result = await Register(parm)
@@ -345,8 +346,14 @@ export default {
       // setStorage('uid',data.data.id);// 用户ID
       sessionStorage.setItem('uid',data.data.id);
       // this.$store.commit('SET_USERDATA',data.data);
+      // let shareid = getStorage("shareid");
+      // if(!shareid){
+      //   // 如果不存在分享ID，则把当前登录Id设为分享Id
+      //   setStorage('shareid',data.data.id);
+      // }
       setStorage('counts',data.data.counts);// 用户数据
       alert(data.message);
+      window.wx_share() // 执行微信分享代码
       this.$router.push({name: 'WorldCup'}); // 跳到首页
     },
     async updatePwd () { //注册

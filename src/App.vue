@@ -16,14 +16,18 @@ export default {
   created (){
     // var url = location.search;
     // console.log("++++++",url);
-    // var _request = {
-    //     QueryString: function(val) {
-    //         var uri = window.location.href;
-    //         var re = new RegExp("" + val + "\=([^\&\?\#]*)", "ig");
-    //         return ((uri.match(re)) ? (uri.match(re)[0].substr(val.length + 1)) : null);
-    //     }
-    // }
-    // var utm_source= _request.QueryString('utm_source')||"";
+    var _request = {
+        QueryString: function(val) {
+            var uri = window.location.href;
+            var re = new RegExp("" + val + "\=([^\&\?\#]*)", "ig");
+            return ((uri.match(re)) ? (uri.match(re)[0].substr(val.length + 1)) : null);
+        }
+    }
+    var shareid= _request.QueryString('shareid')||"";
+    console.log("******app.vue******",shareid)
+    if(shareid){
+      setStorage('shareid',shareid);
+    }
     // var publicfrom= _request.QueryString('publicfrom')||"";
     // this.$store.commit('SET_UTM_SOURCE',utm_source)
     // this.$store.commit('SET_PUBLICFROM',publicfrom)

@@ -183,7 +183,6 @@ export default {
         let data = result.data;
         setStorage('counts',data.data.counts);// 用户数据
         this.isLoading=false;
-        
     },
     select(index){
         this.selectIndex = index;
@@ -202,7 +201,7 @@ export default {
         else if(index==5){
           this.$router.push({name: 'Schedule'});
         }
-      }
+    }
   },
   watch:{
   }
