@@ -299,6 +299,7 @@ export default {
         setStorage('pwd',this.pwd) //记录登录用户的登陆密码
       }
       this.$router.go(-1);
+      setStorage('shareid',data.data.id);
       window.wx_share() // 执行微信分享代码
     },
     async register () { //注册
@@ -345,6 +346,7 @@ export default {
       // console.log('****register*****',result,data)
       // setStorage('uid',data.data.id);// 用户ID
       sessionStorage.setItem('uid',data.data.id);
+      setStorage('shareid',data.data.id);
       // this.$store.commit('SET_USERDATA',data.data);
       // let shareid = getStorage("shareid");
       // if(!shareid){
@@ -355,6 +357,7 @@ export default {
       alert(data.message);
       window.wx_share() // 执行微信分享代码
       this.$router.push({name: 'WorldCup'}); // 跳到首页
+      window.wx_share() // 执行微信分享代码
     },
     async updatePwd () { //注册
       if(!this.phone||!this.Email){
