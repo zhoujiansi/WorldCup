@@ -244,7 +244,6 @@ export default {
         let data = result.data;
         setStorage('counts',data.data.counts);// 用户数据
         this.isLoading=false;
-        
     },
     loginCheck () {
       this.check1 =! this.check1;
@@ -300,6 +299,7 @@ export default {
         setStorage('pwd',this.pwd) //记录登录用户的登陆密码
       }
       this.$router.go(-1);
+      window.wx_share() // 执行微信分享代码
     },
     async register () { //注册
       if(!this.phone||!this.nickname||!this.Email||!this.pwd||!this.confirmPwd){
