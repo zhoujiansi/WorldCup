@@ -232,6 +232,7 @@ img{
     margin-left: 0.7rem;
     z-index: 2;
 }
+
 .page1 .guess .btn{
     background: transparent url(../../assets/btn_bg.png) no-repeat center center;
     -webkit-background-size: cover;
@@ -245,6 +246,7 @@ img{
     z-index: 2;
     font-size: 0.24rem;
 }
+
 .page1 .mySchedule{
     position: relative;
     width: 100%;

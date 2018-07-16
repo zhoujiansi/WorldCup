@@ -41,7 +41,7 @@
               <tr v-for="(item, index) in rankList">
                 <td width="20%">{{index+1}}</td>
                 <td width="20%">{{item.nickname}}</td>
-                <td width="30%">{{item.counts}}</td>
+                <td width="30%">{{item.sumcounts}}</td>
                 <td width="30%">{{item.WorldCupGuessWinTimes||""}}</td>
               </tr>
             </tbody>

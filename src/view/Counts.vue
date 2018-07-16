@@ -167,11 +167,11 @@ export default {
     goback(id){
       this.$router.push({name: 'Result'});
     },
-    async GetActionList (uid) { //获取赛程
+    async GetActionList (uid) { //获取赛程 
         const parm = {
           pdataid: uid
         }
-        this.isLoading=true
+        this.isLoading=true;
         let result = await GetActionList(parm)
         let data = result.data;
         this.isLoading=false;

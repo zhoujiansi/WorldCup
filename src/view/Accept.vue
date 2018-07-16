@@ -15,7 +15,7 @@
         <img src="../assets/accept_04.png" class="accept_04"  />
         <div class="content">
           <div class="title">我的积分数:{{counts}}  已消耗积分:{{WorldCupUseCounts}} </div>
-          <div class="item" v-for="(item, index) in prizeList" @click="select(item.id)">
+          <div class="item" v-for="(item, index) in prizeList" @click="select(item)">
             <img src="../assets/accept_07.png" v-show="!prizeIds.includes(item.id)"  class="sl left"/>
             <img src="../assets/accept_06.png" v-show="prizeIds.includes(item.id)" class="sl left"/>
             <span class="middle">{{item.prizeCounts}}积分</span>
@@ -71,7 +71,7 @@ export default {
         uid:null,
         dateTime:null,
         counts:null,
-        WorldCupUseCounts:null,
+        WorldCupUseCounts:0,
         selectIndex:4
       }
   },
@@ -84,6 +84,9 @@ export default {
       let uid = sessionStorage.getItem('uid');
       this.counts = getStorage("counts");
       this.WorldCupUseCounts = getStorage("WorldCupUseCounts");
+      if(this.WorldCupUseCounts=="null"){
+        this.WorldCupUseCounts=0;
+      }
       if(uid){
         this.uid = uid;
       }
@@ -94,34 +97,53 @@ export default {
       this.TMWorldCup();
       window.location.href=item.href;
     },
-    show(index){
+    show(status){
       if(this.uid==null){
         alert("您还没有登录，请登录后再试");
         this.$router.push({name: 'Login'});
         return false;
       }
+      else if(this.dateTime<"2018-07-16 08:00:00"){
+        alert("礼物兑换将在2018-07-16 08时开始")
+      }
       else{
-        alert("尚未到奖品兑换时间")
-        // this.showFlag = index;
+        // alert("尚未到奖品兑换时间")
+        this.showFlag = status;
       }
     },
-    select(id){
+    select(item){
+      var id = item.id;
       if(this.prizeIds.includes(id)){
         this.prizeIds.splice(this.prizeIds.findIndex(v => v === id),1);
         // console.log(this.prizeIds.join(","))
       } else{
+        // this.prizeSelect.push(item);
         this.prizeIds.push(id);
         // console.log(this.prizeIds.join(","))
       }
     },
     exchange(){
+      var self =this;
       if(this.prizeIds.length>0){
-        // if(this.dateTime<"2018-07-16 08:00:00"){
-        //   alert("礼物兑换将在2018-07-16 08时开始")
-        // }
-        // else{
-          this.$router.push({name: 'Exchange', params: {PrizeIds: this.prizeIds.join(",")}});
-        // }
+        if(this.dateTime<"2018-07-16 08:00:00"){
+          alert("礼物兑换将在2018-07-16 08时开始")
+        }
+        else{
+          var mycounts=0;
+          self.prizeIds.forEach(function(item){
+            for (var i = 0; i < self.prizeList.length; i++) {
+              if(item==self.prizeList[i].id){
+                mycounts+=Number(self.prizeList[i].prizeCounts);
+              }
+            }
+          });
+          if(Number(this.counts)<mycounts){
+            alert("积分不足,请重新选择")
+          }
+          else{
+            this.$router.push({name: 'Exchange', params: {PrizeIds: this.prizeIds.join(",")}});
+          }
+        }
         
       } else {
         alert("请选择礼品后兑换");

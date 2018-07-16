@@ -239,11 +239,12 @@ export default {
   padding-top:1.2rem;
   width: 100%;
   height: 7.57rem;
-  margin-top: 1.68rem;
+  margin-top: 1.6rem;
   background: url(../assets/ex_01.png) no-repeat top center;
   -webkit-background-size: cover;
   background-size: cover;
   box-sizing: border-box;
+  overflow: auto;
 }
 .box-input{
   display: flex;

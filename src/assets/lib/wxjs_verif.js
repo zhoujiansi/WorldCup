@@ -7,6 +7,7 @@
 	function wx_share(){
 		uid =sessionStorage.getItem('uid') || localStorage.getItem("uid");
 		shareid = localStorage.getItem("shareid") || uid || ""; // 使用这个shareid则分享出去的一直就是这个shareid，只为这个shareid增加积分
+		shareid = shareid === "undefined"?uid:shareid;
 		if(!shareid){
 			shareUrl="http://event.hach.com.cn/worldcup2018wap/index.html"
 		}

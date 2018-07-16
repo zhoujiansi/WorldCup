@@ -11,7 +11,7 @@
             <img src="../assets/phone_icon.png" class="phone_icon" />
           </div>
           <div class="input-container">
-            <input type="text" v-model="info" maxlength=20 placeholder="请输入手机号码/邮箱/昵称"/>
+            <input type="text" v-model="info" maxlength=30 placeholder="请输入手机号码/邮箱/昵称"/>
           </div>
         </div>
         <div class="box-input">

@@ -33,7 +33,7 @@
       	<img v-if="scheduleList.length>0" src="../../assets/update.png" class="update" @click="change()"/>
       	<div class="guess" v-if="scheduleList.length>0">
       		<div class="btn" @click="selectGuess(scheduleList[scheduleIndex].countryA)">{{scheduleList[scheduleIndex].countryA+'胜'}}</div>
-      		<div class="btn" @click="selectGuess('平局')">平 局</div>
+      		<!-- <div class="btn nouse" @click="selectGuess('平局')">平 局</div> -->
       		<div class="btn" @click="selectGuess(scheduleList[scheduleIndex].countryB)">{{scheduleList[scheduleIndex].countryB+'胜'}}</div>
       	</div>
         <div class="noschedule" v-if="scheduleList.length==0">
