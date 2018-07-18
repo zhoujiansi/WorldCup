@@ -238,7 +238,7 @@ export default {
 .ex_01{
   padding-top:1.2rem;
   width: 100%;
-  height: 7.57rem;
+  height: 5.57rem;
   margin-top: 1.6rem;
   background: url(../assets/ex_01.png) no-repeat top center;
   -webkit-background-size: cover;
